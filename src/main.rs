@@ -4,11 +4,11 @@ extern crate serde_derive;
 use kube::{
     api::{Informer, Object, Event, RawApi, Void, WatchEvent},
     client::APIClient,
-    config,
+    config::Config,
 };
 
 fn main() {
-    let kubeconfig = config::load_kube_config().expect("kubeconfig failed to load");
+    let kubeconfig = Config::infer();
 
     let client = APIClient::new(kubeconfig);
 
